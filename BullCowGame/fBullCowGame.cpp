@@ -9,6 +9,11 @@ int32 FBullCowGame::GetMaxTries() const {
 
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 
+bool FBullCowGame::GetIsGameWon() const { return bIsGameWon; }
+
+//return level the user is currently on 
+int32 FBullCowGame::GetCurrentLevel() const { return Level; }
+
 FBullCowGame::FBullCowGame(){ Reset(); }
 
 void FBullCowGame::Reset()
@@ -24,8 +29,6 @@ void FBullCowGame::Reset()
 	bIsGameWon = false;
 	return;
 }
-
-
 
 void FBullCowGame::AdvanceLevel()
 {
@@ -47,17 +50,6 @@ int32 FBullCowGame::GetHiddenWordLength() const
 {
 	int32 HiddenWordLength = MyHiddenWord.length();
 	return HiddenWordLength;
-}
-//return level the user is currently on 
-int32 FBullCowGame::GetCurrentLevel() const
-{
-
-	return Level;
-}
-
-bool FBullCowGame::GetIsGameWon() const
-{
-	return bIsGameWon;
 }
 
 EGeussStatus FBullCowGame::CheckCurrentGuessIsValid(FString Guess) const
@@ -160,7 +152,11 @@ FString FBullCowGame::GenerateNewWord(int32 WordLength)
 	GameWords[2][2] = "cigar";
 	GameWords[2][3] = "micro";
 
-	//random number from 0 - 3
+	//TODO find a less cumbersome way of storing words.. 
+	//maybe a class that sorts them according to size and 
+	//detects the number of words that are a certain length for the random number 
+
+	//TODO find a way to generate random numbers that aren't the same every game 
 	int32 random = rand() % 4;
 	int32 ArrayindexOffset = 3;
 	FString NewWord = GameWords[WordLength - ArrayindexOffset][random];
