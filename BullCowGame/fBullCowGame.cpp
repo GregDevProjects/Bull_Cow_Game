@@ -1,3 +1,5 @@
+#pragma once
+
 #include "fBullCowGame.h"
 #include <map>
 #define TMap std::map
@@ -154,7 +156,8 @@ FString FBullCowGame::GenerateNewWord(int32 WordLength)
 
 	//TODO find a less cumbersome way of storing words.. 
 	//maybe a class that sorts them according to size and 
-	//detects the number of words that are a certain length for the random number 
+	//detects the number of words that are a certain length for the random number
+	//also checking to ensure word is an isogram would be useful 
 
 	//TODO find a way to generate random numbers that aren't the same every game 
 	int32 random = rand() % 4;

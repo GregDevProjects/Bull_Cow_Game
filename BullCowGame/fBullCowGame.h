@@ -1,3 +1,7 @@
+/* Handles game logic for guessing words 
+User interaction is handled in main.cpp
+*/
+
 #pragma once
 #include <iostream>
 #include <string>
